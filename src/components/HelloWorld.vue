@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg + ' ' + click }}</h1>
+    <button v-on:click="button_counter">Жмякай!</button> <br><br>
+    <button v-on:click="button_counter_refresh">Заново!</button>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -37,9 +39,23 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: String
   },
-};
+  data: function() {
+    return {
+      click: 0
+    }
+  },
+  methods: {
+    button_counter: function() {
+      this.click+=1
+    },
+    button_counter_refresh: function() {
+      this.click = 0
+    }
+  }
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
